@@ -1,0 +1,19 @@
+{
+    "name": "internetdata-fastify-integration",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Exercises the PUBLISHED internetdata-fastify package against the live API.",
+    "type": "module",
+    "license": "MIT",
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "fastify": "^5.6.1",
+        "internetdata-fastify": "^1.0.0"
+    },
+    "scripts": {
+        "test": "node --test test/*.test.mjs",
+        "integration": "node scripts/run.mjs"
+    }
+}
