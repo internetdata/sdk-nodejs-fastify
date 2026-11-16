@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.3 - 2026-11-16
+
+### Features
+
+- Require internetdata 2.12.0: an AS's rank, neighbors and hosted domains ([`c011d98`](https://github.com/internetdata/sdk-nodejs-fastify/commit/c011d98c5c864741a9e009d955544de56a7f7174))
+
 ## 1.0.2 - 2026-11-15
 
 ### Features
