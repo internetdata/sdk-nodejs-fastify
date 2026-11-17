@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.4 - 2026-11-17
+
+### Features
+
+- Require internetdata 2.13.0: cap_reached on a paid answer past its overage cap ([`3b6fff4`](https://github.com/internetdata/sdk-nodejs-fastify/commit/3b6fff4360775b558364804df947c38695fe3081))
+
 ## 1.0.3 - 2026-11-16
 
 ### Features
