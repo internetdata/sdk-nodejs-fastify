@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.6 - 2026-11-19
+
+### Fixes
+
+- Require internetdata 2.14.1: a reduced answer is cached a minute at most ([`dd4759c`](https://github.com/internetdata/sdk-nodejs-fastify/commit/dd4759cb3ef14f98465f353c49e64ec35c75e719))
+
 ## 1.0.5 - 2026-11-18
 
 ### Fixes
