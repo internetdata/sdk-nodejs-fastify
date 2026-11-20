@@ -45,7 +45,7 @@
         "node": ">=22"
     },
     "dependencies": {
-        "@internetdata/internetdata": "^2.14.2",
+        "@internetdata/internetdata": "^2.15.0",
         "fastify-plugin": "^5.0.1"
     },
     "peerDependencies": {
