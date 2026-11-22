@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.9 - 2026-11-22
+
+### Features
+
+- Require internetdata 2.16.0: block on isBot, and read a paid answer's bot ([`1bc2a37`](https://github.com/internetdata/sdk-nodejs-fastify/commit/1bc2a37db27acc31a08ef1a06e37b5fc54aa54bd))
+- README: block crawlers, monitors and scanners with isBot, on every plan ([`5fdd050`](https://github.com/internetdata/sdk-nodejs-fastify/commit/5fdd050b474996376c5d5d3417c35b7486799995))
+
 ## 1.0.8 - 2026-11-20
 
 ### Fixes
