@@ -15,7 +15,7 @@ npm install internetdata-fastify
 
 Requires Node.js 22 or newer and Fastify 4 or 5. TypeScript types are included.
 
-Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's one address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
+Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, bot, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's one address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
 
 ```js
 import Fastify from 'fastify';
@@ -48,11 +48,12 @@ await app.register(internetdata, {
 });
 ```
 
-A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do the first two of these:
+A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do the first three of these:
 
 ```js
 blockCondition: { asn: { type: 'hosting' } }                          // the network's type
 blockCondition: [{ isAnycast: true }, { isSatellite: true }]          // anycast and satellite space
+blockCondition: { isBot: true }                                       // crawlers, monitors and scanners
 blockCondition: [{ isHosting: true }, { isCdn: true }]                // traffic from servers, not people
 blockCondition: [{ isVpn: true }, { isTor: true }, { isResproxy: true }]  // anonymity: a list is OR
 blockCondition: { isVpn: true, vpn: { provider: 'nordvpn' } }         // one provider
