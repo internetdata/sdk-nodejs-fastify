@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.10 - 2026-11-23
+
+### Fixes
+
+- Require internetdata 2.16.1 ([`291c26e`](https://github.com/internetdata/sdk-nodejs-fastify/commit/291c26e71ca775f26af6a7d21c06144786958277))
+
 ## 1.0.9 - 2026-11-22
 
 ### Features
