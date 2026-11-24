@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.11 - 2026-11-24
+
+### Features
+
+- Require @internetdata/internetdata 2.17.0: a condition on a list member matches any element ([`82a93fa`](https://github.com/internetdata/sdk-nodejs-fastify/commit/82a93fa3ceaeabf3a631133581ad981a1f301008))
+
 ## 1.0.10 - 2026-11-23
 
 ### Fixes
