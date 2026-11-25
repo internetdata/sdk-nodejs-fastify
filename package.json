@@ -52,9 +52,9 @@
         "fastify": "4.x || 5.x"
     },
     "devDependencies": {
-        "@mslmio/eslint-config": "^1.1.0",
+        "@mslmio/eslint-config": "^2.6.2",
         "@types/node": "^26.2.0",
-        "eslint": "^10.10.0",
+        "eslint": "^10.15.0",
         "fastify": "^5.6.1",
         "typescript": "^6.0.3"
     },
