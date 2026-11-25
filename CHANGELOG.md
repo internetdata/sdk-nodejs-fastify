@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.0 - 2026-11-25
+
+### Features
+
+- Let a verified crawler through with allowBots ([`805b317`](https://github.com/internetdata/sdk-nodejs-fastify/commit/805b317807a94cb4e01eaac001113a9dbeea0967))
+- Require @internetdata/internetdata 2.18.0: a user agent sent with a lookup, and allowBots in the middleware core ([`ffe7679`](https://github.com/internetdata/sdk-nodejs-fastify/commit/ffe76791895b7c07e93ad8aa3d5b53f100c28397))
+
 ## 1.0.11 - 2026-11-24
 
 ### Features
