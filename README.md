@@ -74,6 +74,20 @@ await app.register(internetdata, {
 
 `onBlocked` may be async; it is awaited, so the route handler never runs.
 
+## Let a verified crawler through
+
+`allowBots` sends each request's own `User-Agent` with its lookup, and a request whose answer's `userAgent.verdict` is `verified`, a crawler its operator vouches for such as Googlebot from Google's addresses, is never blocked, whatever `blockCondition` matches. The answer is still on `request.internetdata`:
+
+```js
+await app.register(internetdata, {
+    apiKey: process.env.INTERNETDATA_API_KEY,
+    blockCondition: { isBot: true },
+    allowBots: true,
+});
+```
+
+A client claiming to be a crawler from an address its operator does not vouch for reads `spoofed`, so `blockCondition: { userAgent: { verdict: 'spoofed' } }` refuses a forged crawler. A request with no `User-Agent` sends none. It is off by default, and then no agent is sent and the cache keeps one answer per address rather than one per address and agent. A verdict needs a paid plan or the trial: a served answer without one is reported once under `onMissingField`.
+
 ## Where the client address comes from
 
 This is the setting that decides whether any of the above works, and it is the one thing only you can get right.
@@ -171,7 +185,7 @@ Beyond a few million distinct visitors a day, stop calling the API per request: 
 
 ## Absent is not false
 
-Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is `undefined`, which means "not in your plan" rather than "checked, and no".
+Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, `userAgent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is `undefined`, which means "not in your plan" rather than "checked, and no".
 
 ```js
 request.internetdata.result?.isVpn ?? false   // when you only want the flag
