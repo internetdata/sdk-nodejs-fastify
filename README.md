@@ -15,7 +15,7 @@ npm install internetdata-fastify
 
 Requires Node.js 22 or newer and Fastify 4 or 5. TypeScript types are included.
 
-Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, bot, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's one address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
+Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay and anycast, with no daily or monthly cap. Every lookup your app makes comes from your server's one address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN, bots, carriers, satellites, the service flags and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
 
 ```js
 import Fastify from 'fastify';
@@ -48,7 +48,7 @@ await app.register(internetdata, {
 });
 ```
 
-A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do the first three of these:
+A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do `isTor`, `isRelay` and `isAnycast`; the others here need a paid plan or the trial:
 
 ```js
 blockCondition: { asn: { type: 'hosting' } }                          // the network's type
@@ -185,7 +185,7 @@ Beyond a few million distinct visitors a day, stop calling the API per request: 
 
 ## Absent is not false
 
-Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, `userAgent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is `undefined`, which means "not in your plan" rather than "checked, and no".
+Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn`, the four proxy flags, `isBot`, `isCarrier`, `isSatellite` and the five service flags, the detail behind them, `userAgent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is `undefined`, which means "not in your plan" rather than "checked, and no". The exceptions are `isCarrier`, `isSatellite` and the five service flags, which stay typed `boolean` until the next major: an answer without one reads `false`, and `result.raw` has the member only when the API sent it.
 
 ```js
 request.internetdata.result?.isVpn ?? false   // when you only want the flag
