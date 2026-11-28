@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.2 - 2026-11-28
+
+### Features
+
+- Require @internetdata/internetdata 2.20.0: allowBots sends only a crawler's User-Agent, at most four an address ([`48506a2`](https://github.com/internetdata/sdk-nodejs-fastify/commit/48506a2ff425a917845db64cf7f8da63991e2cb0))
+
 ## 1.1.1 - 2026-11-26
 
 ### Features
