@@ -76,7 +76,7 @@ await app.register(internetdata, {
 
 ## Let a verified crawler through
 
-`allowBots` sends each request's own `User-Agent` with its lookup, and a request whose answer's `userAgent.verdict` is `verified`, a crawler its operator vouches for such as Googlebot from Google's addresses, is never blocked, whatever `blockCondition` matches. The answer is still on `request.internetdata`:
+`allowBots` sends a request's own `User-Agent` with its lookup when it names a crawler, and a request whose answer's `userAgent.verdict` is `verified`, a crawler its operator vouches for such as Googlebot from Google's addresses, is never blocked, whatever `blockCondition` matches. The answer is still on `request.internetdata`:
 
 ```js
 await app.register(internetdata, {
@@ -86,7 +86,7 @@ await app.register(internetdata, {
 });
 ```
 
-A client claiming to be a crawler from an address its operator does not vouch for reads `spoofed`, so `blockCondition: { userAgent: { verdict: 'spoofed' } }` refuses a forged crawler. A request with no `User-Agent` sends none. It is off by default, and then no agent is sent and the cache keeps one answer per address rather than one per address and agent. A verdict needs a paid plan or the trial: a served answer without one is reported once under `onMissingField`.
+A client claiming to be a crawler from an address its operator does not vouch for reads `spoofed`, so `blockCondition: { userAgent: { verdict: 'spoofed' } }` refuses a forged crawler. Any other agent, or none, is not sent, since its verdict could only be `not_bot`. One address is looked up with at most four crawler agents an hour: past those its lookup sends none, and a request passes as a crawler only where the answer's `bot.verified` is true. It is off by default, and then no agent is sent and the cache keeps one answer per address rather than one per address and agent. A verdict needs a paid plan or the trial: a served answer without one is reported once under `onMissingField`.
 
 ## Where the client address comes from
 
