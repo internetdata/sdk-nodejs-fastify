@@ -101,7 +101,7 @@ test('blocks with 403 on a country condition, and passes another country', async
 
 test('blocks on a network type, and on anonymity, and passes a clean answer', async () => {
     const hosting = await serve({
-        client: stubClient(UNLIMITED).client, ipSelector: fixedIp,
+        client: stubClient(PAID).client, ipSelector: fixedIp,
         blockCondition: { asn: { type: 'hosting' } },
     });
     assert.equal((await hosting()).status, 403);
